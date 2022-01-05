@@ -15,25 +15,25 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <Action/>                
-        <Action/>                
-        <Action/>        
-        <Operator />
+        <Action ac="AC"/>                
+        <Action ac="neg"/>                
+        <Action ac="%"/>        
+        <Operator op="÷"/>
         <Number number="7"/>
         <Number number="8"/>
         <Number number="9"/>        
-        <Operator/>
+        <Operator op="x"/>
         <Number number="4" />
         <Number number="5" />
         <Number number="6" />
-        <Operator/>
+        <Operator op="-"/>
         <Number number="1" />
         <Number number="2" />
         <Number number="3" />
-        <Operator/>
-        <Number number="0" zero="true"/>
+        <Operator op="+"/>
+        <Number number="0" zero="true"s/>
         <Number number="." />
-        <Operator />
+        <Operator op="="/>
       </main>
 
       
