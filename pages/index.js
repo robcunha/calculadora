@@ -5,8 +5,35 @@ import Number from '../components/number'
 import Operator from '../components/operator'
 import Action from '../components/action'
 import Display from '../components/display'
+import React, { useEffect, useState } from 'react'
 
 export default function Home() {
+  let [expression, setExpression] = useState('0')
+
+  const clearDisplay = () => {
+    setExpression('0')
+  }
+
+  const convertToNegative = () => {
+    if (expression[0] === '-') {
+      setExpression(expression.slice(1))
+    } else {
+      setExpression('-' + expression)
+    }
+  }
+
+  const addToExpression = (e) => {
+    setExpression(expression + e.target.innerText)
+    
+  }
+
+  const setDisplay = () => {
+    
+  }
+
+
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,28 +42,28 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Display/>
+      <Display expression={expression}/>
 
       <main className={styles.main}>
-        <Action ac="AC"/>                
-        <Action ac="neg"/>                
-        <Action ac="%"/>        
-        <Operator op="÷"/>
-        <Number number="7"/>
-        <Number number="8"/>
-        <Number number="9"/>        
-        <Operator op="x"/>
-        <Number number="4" />
-        <Number number="5" />
-        <Number number="6" />
-        <Operator op="-"/>
-        <Number number="1" />
-        <Number number="2" />
-        <Number number="3" />
-        <Operator op="+"/>
-        <Number number="0" zero="true"s/>
-        <Number number="." />
-        <Operator op="="/>
+        <Action value="AC" onClick={clearDisplay}/>                
+        <Action value="neg" onClick={convertToNegative}/>                
+        <Action value="%" onClick={addToExpression}/>        
+        <Operator value="÷" onClick={addToExpression}/>
+        <Number value="7" onClick={addToExpression}/>
+        <Number value="8" onClick={addToExpression}/>
+        <Number value="9" onClick={addToExpression}/>        
+        <Operator value="x" onClick={addToExpression}/>
+        <Number value="4" onClick={addToExpression}/>
+        <Number value="5" onClick={addToExpression}/>
+        <Number value="6" onClick={addToExpression}/>
+        <Operator value="-" onClick={addToExpression}/>
+        <Number value="1" onClick={addToExpression}/>
+        <Number value="2" onClick={addToExpression}/>
+        <Number value="3" onClick={addToExpression}/>
+        <Operator value="+" onClick={addToExpression}/>
+        <Number value="0" zero="true" onClick={addToExpression}/>
+        <Number value="," onClick={addToExpression}/>
+        <Operator value="=" />
       </main>
 
       

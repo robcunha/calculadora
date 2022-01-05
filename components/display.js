@@ -1,9 +1,9 @@
 import styles from '../styles/components/display.module.sass'
 
-export default function Display({ ac }) {
+export default function Display(props) {
   return (
     <div className={styles.display}>
-      <p>0</p>
+      <p>{props.expression}</p>
     </div>
   )
 }
