@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   const convertToNegative = () => {
-    if (expression[0] === '-') {
+    if (expression [0] === '-') {
       setExpression(expression.slice(1))
     } else {
       setExpression('-' + expression)
@@ -23,12 +23,25 @@ export default function Home() {
   }
 
   const addToExpression = (e) => {
-    setExpression(expression + e.target.innerText)
+    if (expression === '0') {
+      setExpression(e.target.innerText)
+    }else{
+      setExpression(expression + e.target.innerText)
+    }
     
   }
 
-  const setDisplay = () => {
-    
+  const calculate = () => {
+    setExpression(eval(expression))
+    console.log(expression.length)
+    if(expression.length > 10){
+      setExpression('Error')
+    }
+
+  }
+
+  const calculatePercent = () => {
+    setExpression(eval(eval(expression) / 100))
   }
 
 
@@ -47,12 +60,12 @@ export default function Home() {
       <main className={styles.main}>
         <Action value="AC" onClick={clearDisplay}/>                
         <Action value="neg" onClick={convertToNegative}/>                
-        <Action value="%" onClick={addToExpression}/>        
-        <Operator value="÷" onClick={addToExpression}/>
+        <Action value="%" onClick={calculatePercent}/>        
+        <Operator value="/" operator="/" onClick={addToExpression}/>
         <Number value="7" onClick={addToExpression}/>
         <Number value="8" onClick={addToExpression}/>
         <Number value="9" onClick={addToExpression}/>        
-        <Operator value="x" onClick={addToExpression}/>
+        <Operator value="*" operator="." onClick={addToExpression}/>
         <Number value="4" onClick={addToExpression}/>
         <Number value="5" onClick={addToExpression}/>
         <Number value="6" onClick={addToExpression}/>
@@ -60,10 +73,10 @@ export default function Home() {
         <Number value="1" onClick={addToExpression}/>
         <Number value="2" onClick={addToExpression}/>
         <Number value="3" onClick={addToExpression}/>
-        <Operator value="+" onClick={addToExpression}/>
+        <Operator value="+" operator="+" onClick={addToExpression}/>
         <Number value="0" zero="true" onClick={addToExpression}/>
         <Number value="," onClick={addToExpression}/>
-        <Operator value="=" />
+        <Operator value="=" operator="=" onClick={calculate}/>
       </main>
 
       
